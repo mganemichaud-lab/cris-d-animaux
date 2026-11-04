@@ -1,61 +1,60 @@
 #!/bin/zsh
-# Génère les MP3 des onomatopées avec les voix macOS (say + ffmpeg).
+# Génère les MP3 des onomatopées avec les voix neuronales Microsoft (edge-tts).
+# Installation (une fois) : python3 -m venv .venv && .venv/bin/pip install edge-tts
 # Format : animal|fichier|voix|texte prononcé
 cd "${0:A:h}"
-TMP=$(mktemp -d)
 while IFS='|' read -r animal fichier voix texte; do
   [[ -z "$animal" || "$animal" == \#* ]] && continue
   mkdir -p "audio/$animal"
-  say -v "$voix" -o "$TMP/a.aiff" "$texte" &&
-    ffmpeg -y -loglevel error -i "$TMP/a.aiff" -codec:a libmp3lame -q:a 3 "audio/$animal/$fichier.mp3" &&
-    echo "ok  $animal/$fichier.mp3  ($texte)"
+  .venv/bin/edge-tts --voice "$voix" --text "$texte" --write-media "audio/$animal/$fichier.mp3" 2>/dev/null &&
+    echo "ok  $animal/$fichier.mp3  ($texte)" || echo "ÉCHEC  $animal/$fichier.mp3"
 done <<'LISTE'
-chien|fr|Thomas (French (France))|Ouaf ouaf !
-chien|fr-2|Thomas (French (France))|Wouf wouf !
-chien|en|Samantha (English (US))|Woof woof!
-chien|en-2|Samantha (English (US))|Bow wow!
-chien|es|Mónica|¡Guau guau!
-chien|ja|Kyoko|ワンワン
-chien|hi|Lekha|बाउ बाउ
-coq|fr|Thomas (French (France))|Cocorico !
-coq|en|Samantha (English (US))|Cock-a-doodle-doo!
-coq|es|Mónica|¡Kikirikí!
-coq|ja|Kyoko|コケコッコー
-coq|tr|Yelda|Ü-ürü-üüü!
-grenouille|fr|Thomas (French (France))|Coâ coâ !
-grenouille|en|Samantha (English (US))|Ribbit!
-grenouille|ru|Milena|Ква ква!
-grenouille|hi|Lekha|टर्र टर्र
-grenouille|tr|Yelda|Vrak vrak!
-cochon|fr|Thomas (French (France))|Groin groin !
-cochon|ar|Majed|قُباع
-cochon|es|Mónica|¡Oinc oinc!
-cochon|sv|Alva|Nöff nöff!
-cochon|ja|Kyoko|ブーブー
-vache|fr|Thomas (French (France))|Meuh !
-vache|en|Samantha (English (US))|Moo!
-vache|nl|Xander|Boe!
-vache|ja|Kyoko|モーモー
-vache|tl|Damayanti|Unga!
-lion|fr|Thomas (French (France))|Grrr !
-lion|en|Samantha (English (US))|Rawr!
-lion|fi|Satu|Mur!
-lion|ja|Kyoko|ガオー
-lion|tl|Damayanti|Awoo!
-mouton|fr|Thomas (French (France))|Bêêê !
-mouton|it|Alice|Bee!
-mouton|ar|Majed|ماء
-mouton|tr|Yelda|Mee!
-mouton|sk|Laura|Bé bé!
-oiseau|fr|Thomas (French (France))|Cui cui !
-oiseau|en|Samantha (English (US))|Tweet tweet!
-oiseau|ta|Vani|கூ, கூ
-oiseau|hi|Lekha|चेह चेह
-oiseau|pt|Luciana|Piu piu!
-chat|fr|Thomas (French (France))|Miaou miaou !
-chat|ar|Majed|مُواء
-chat|el|Melina|Νιάου νιάου!
-chat|vi|Linh|Meo meo!
-chat|bn|Piya|মিউ মিউ
+chien|fr|fr-FR-DeniseNeural|Ouaf ouaf !
+chien|fr-2|fr-FR-DeniseNeural|Wouf wouf !
+chien|en|en-US-AvaNeural|Woof woof!
+chien|en-2|en-US-AvaNeural|Bow wow!
+chien|es|es-ES-ElviraNeural|¡Guau guau!
+chien|ja|ja-JP-NanamiNeural|ワンワン
+chien|hi|hi-IN-SwaraNeural|बाउ बाउ
+chien|zh|zh-CN-XiaoxiaoNeural|汪汪！
+coq|fr|fr-FR-DeniseNeural|Cocorico !
+coq|en|en-US-AvaNeural|Cock-a-doodle-doo!
+coq|es|es-ES-ElviraNeural|¡Kikirikí!
+coq|ja|ja-JP-NanamiNeural|コケコッコー
+coq|tr|tr-TR-EmelNeural|Ü-ürü-üüü!
+grenouille|fr|fr-FR-DeniseNeural|Coâ coâ !
+grenouille|en|en-US-AvaNeural|Ribbit!
+grenouille|ru|ru-RU-SvetlanaNeural|Ква ква!
+grenouille|hi|hi-IN-SwaraNeural|टर्र टर्र
+grenouille|tr|tr-TR-EmelNeural|Vrak vrak!
+cochon|fr|fr-FR-DeniseNeural|Groin groin !
+cochon|ar|ar-SA-ZariyahNeural|قُباع
+cochon|es|es-ES-ElviraNeural|¡Oinc oinc!
+cochon|sv|sv-SE-SofieNeural|Nöff nöff!
+cochon|ja|ja-JP-NanamiNeural|ブーブー
+vache|fr|fr-FR-DeniseNeural|Meuh !
+vache|en|en-US-AvaNeural|Moo!
+vache|nl|nl-NL-FennaNeural|Boe!
+vache|ja|ja-JP-NanamiNeural|モーモー
+vache|tl|fil-PH-BlessicaNeural|Unga!
+lion|fr|fr-FR-DeniseNeural|Grrr !
+lion|en|en-US-AvaNeural|Rawr!
+lion|fi|fi-FI-NooraNeural|Mur!
+lion|ja|ja-JP-NanamiNeural|ガオー
+lion|tl|fil-PH-BlessicaNeural|Awoo!
+mouton|fr|fr-FR-DeniseNeural|Bêêê !
+mouton|it|it-IT-IsabellaNeural|Bee!
+mouton|ar|ar-SA-ZariyahNeural|ماء
+mouton|tr|tr-TR-EmelNeural|Mee!
+mouton|sk|sk-SK-ViktoriaNeural|Bé bé!
+oiseau|fr|fr-FR-DeniseNeural|Cui cui !
+oiseau|en|en-US-AvaNeural|Tweet tweet!
+oiseau|ta|ta-IN-PallaviNeural|கூ, கூ
+oiseau|hi|hi-IN-SwaraNeural|चेह चेह
+oiseau|pt|pt-BR-FranciscaNeural|Piu piu!
+chat|fr|fr-FR-DeniseNeural|Miaou miaou !
+chat|ar|ar-SA-ZariyahNeural|مُواء
+chat|el|el-GR-AthinaNeural|Νιάου νιάου!
+chat|vi|vi-VN-HoaiMyNeural|Meo meo!
+chat|bn|bn-IN-TanishaaNeural|মিউ মিউ
 LISTE
-rm -rf "$TMP"
