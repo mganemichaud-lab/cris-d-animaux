@@ -58,6 +58,7 @@ const ANIMAUX = [
     id: "lion", nom: "🦁 Lion",
     cris: [
       { code: "fr", langue: "Français", texte: "Grrr" },
+      { code: "fr-2", langue: "Français", texte: "Roaaar" },
       { code: "en", langue: "Anglais",  texte: "Rawr" },
       { code: "fi", langue: "Finnois",  texte: "Mur" },
       { code: "ja", langue: "Japonais", texte: "Gao", note: "ガオー" },

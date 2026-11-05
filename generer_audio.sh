@@ -44,6 +44,7 @@ vache|nl|nl-NL-FennaNeural|Boe!
 vache|ja|ja-JP-NanamiNeural|モーモー
 vache|tl|fil-PH-BlessicaNeural|Unga!
 lion|fr|fr-FR-DeniseNeural|Grrrrreuh !|0.7
+lion|fr-2|fr-FR-DeniseNeural|Roaaar !|0.7
 lion|en|en-US-AvaNeural|Rawr!
 lion|fi|fi-FI-NooraNeural|Mur!
 lion|ja|ja-JP-NanamiNeural|ガオー
