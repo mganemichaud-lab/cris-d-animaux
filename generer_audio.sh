@@ -1,12 +1,18 @@
 #!/bin/zsh
 # Génère les MP3 des onomatopées avec les voix neuronales Microsoft (edge-tts).
 # Installation (une fois) : python3 -m venv .venv && .venv/bin/pip install edge-tts
-# Format : animal|fichier|voix|texte prononcé
+# Usage : ./generer_audio.sh [animal/fichier ...]  (sans argument : tous les cris)
+# Format : animal|fichier|voix|texte prononcé[|vitesse]  (vitesse < 1 pour allonger le son, ex. 0.6)
 cd "${0:A:h}"
-while IFS='|' read -r animal fichier voix texte; do
+while IFS='|' read -r animal fichier voix texte vitesse; do
   [[ -z "$animal" || "$animal" == \#* ]] && continue
+  (( $# )) && (( ! ${@[(Ie)$animal/$fichier]} )) && continue
   mkdir -p "audio/$animal"
-  .venv/bin/edge-tts --voice "$voix" --text "$texte" --write-media "audio/$animal/$fichier.mp3" 2>/dev/null &&
+  sortie="audio/$animal/$fichier.mp3"
+  .venv/bin/edge-tts --voice "$voix" --text "$texte" --write-media "$sortie" 2>/dev/null &&
+    if [[ -n "$vitesse" ]]; then
+      ffmpeg -nostdin -y -loglevel error -i "$sortie" -filter:a "atempo=$vitesse" "$sortie.tmp.mp3" && mv "$sortie.tmp.mp3" "$sortie"
+    fi &&
     echo "ok  $animal/$fichier.mp3  ($texte)" || echo "ÉCHEC  $animal/$fichier.mp3"
 done <<'LISTE'
 chien|fr|fr-FR-DeniseNeural|Ouaf ouaf !
@@ -32,12 +38,12 @@ cochon|ar|ar-SA-ZariyahNeural|قُباع
 cochon|es|es-ES-ElviraNeural|¡Oinc oinc!
 cochon|sv|sv-SE-SofieNeural|Nöff nöff!
 cochon|ja|ja-JP-NanamiNeural|ブーブー
-vache|fr|fr-FR-DeniseNeural|Meuh !
-vache|en|en-US-AvaNeural|Moo!
+vache|fr|fr-FR-DeniseNeural|Meeeeuh !|0.6
+vache|en|en-US-AvaNeural|Moooooo!|0.6
 vache|nl|nl-NL-FennaNeural|Boe!
 vache|ja|ja-JP-NanamiNeural|モーモー
 vache|tl|fil-PH-BlessicaNeural|Unga!
-lion|fr|fr-FR-DeniseNeural|Grrr !
+lion|fr|fr-FR-DeniseNeural|Grrrrreuh !|0.7
 lion|en|en-US-AvaNeural|Rawr!
 lion|fi|fi-FI-NooraNeural|Mur!
 lion|ja|ja-JP-NanamiNeural|ガオー
