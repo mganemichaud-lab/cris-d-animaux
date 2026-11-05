@@ -39,7 +39,7 @@ cochon|es|es-ES-ElviraNeural|¡Oinc oinc!
 cochon|sv|sv-SE-SofieNeural|Nöff nöff!
 cochon|ja|ja-JP-NanamiNeural|ブーブー
 vache|fr|fr-FR-DeniseNeural|Meuh !|0.5
-vache|en|en-US-AvaNeural|Moooooo!|0.6
+vache|en|en-US-AvaNeural|Moo!|0.5
 vache|nl|nl-NL-FennaNeural|Boe!
 vache|ja|ja-JP-NanamiNeural|モーモー
 vache|tl|fil-PH-BlessicaNeural|Unga!
