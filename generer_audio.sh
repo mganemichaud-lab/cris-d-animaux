@@ -49,7 +49,7 @@ lion|en|en-US-AvaNeural|Rawr!
 lion|fi|fi-FI-NooraNeural|Mur!
 lion|ja|ja-JP-NanamiNeural|ガオー
 lion|tl|fil-PH-BlessicaNeural|Awoo!
-mouton|fr|fr-FR-DeniseNeural|Bêêê !
+mouton|fr|fr-FR-DeniseNeural|Bè, bè !|0.5
 mouton|it|it-IT-IsabellaNeural|Bee!
 mouton|ar|ar-SA-ZariyahNeural|ماء
 mouton|tr|tr-TR-EmelNeural|Mee!
