@@ -71,7 +71,7 @@ abeille|zh|zh-CN-XiaoxiaoNeural|嗡嗡嗡
 abeille|ja|ja-JP-NanamiNeural|ブーン
 abeille|tr|tr-TR-EmelNeural|Vızz!
 abeille|hi|hi-IN-SwaraNeural|बर्र
-cheval|fr|fr-FR-DeniseNeural|Hîîî, hîîî !||--rate=-50% --pitch=+40Hz
+cheval|fr|fr-FR-VivienneMultilingualNeural|Heee, heee!||--rate=-50% --pitch=+40Hz
 cheval|en|en-US-AvaNeural|Neigh!
 cheval|ru|ru-RU-SvetlanaNeural|И-го-го!
 cheval|de|de-DE-KatjaNeural|Ieh-hieh-hieh!
