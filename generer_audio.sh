@@ -38,6 +38,7 @@ cochon|ar|ar-SA-ZariyahNeural|قُباع
 cochon|es|es-ES-ElviraNeural|¡Oinc oinc!
 cochon|sv|sv-SE-SofieNeural|Nöff nöff!
 cochon|ja|ja-JP-NanamiNeural|ブーブー
+cochon|uk|uk-UA-PolinaNeural|Хрю-хрю!
 vache|fr|fr-FR-DeniseNeural|Meuh !|0.5
 vache|en|en-US-AvaNeural|Moo!|0.5
 vache|nl|nl-NL-FennaNeural|Boe!
@@ -64,4 +65,15 @@ chat|ar|ar-SA-ZariyahNeural|مُواء
 chat|el|el-GR-AthinaNeural|Νιάου νιάου!
 chat|vi|vi-VN-HoaiMyNeural|Meo meo!
 chat|bn|bn-IN-TanishaaNeural|মিউ মিউ
+chat|uk|uk-UA-PolinaNeural|М'яв-м'яв!
+abeille|fr|fr-FR-DeniseNeural|Bzeu !|0.6
+abeille|zh|zh-CN-XiaoxiaoNeural|嗡嗡嗡
+abeille|ja|ja-JP-NanamiNeural|ブーン
+abeille|tr|tr-TR-EmelNeural|Vızz!
+abeille|hi|hi-IN-SwaraNeural|बर्र
+cheval|fr|fr-FR-DeniseNeural|Hiiii, hiiii !
+cheval|en|en-US-AvaNeural|Neigh!
+cheval|ru|ru-RU-SvetlanaNeural|И-го-го!
+cheval|de|de-DE-KatjaNeural|Ieh-hieh-hieh!
+cheval|ko|ko-KR-SunHiNeural|히잉
 LISTE

@@ -42,6 +42,7 @@ const ANIMAUX = [
       { code: "es", langue: "Espagnol", texte: "Oinc oinc" },
       { code: "sv", langue: "Suédois",  texte: "Nöff nöff" },
       { code: "ja", langue: "Japonais", texte: "Buu buu", note: "ブーブー" },
+      { code: "uk", langue: "Ukrainien", texte: "Khryu-khryu", note: "Хрю-хрю" },
     ],
   },
   {
@@ -93,6 +94,27 @@ const ANIMAUX = [
       { code: "el", langue: "Grec",       texte: "Niau niau", note: "Νιάου νιάου" },
       { code: "vi", langue: "Vietnamien", texte: "Meo meo" },
       { code: "bn", langue: "Bengali",    texte: "Miu miu", note: "মিউ মিউ" },
+      { code: "uk", langue: "Ukrainien",  texte: "Myav-myav", note: "М'яв-м'яв" },
+    ],
+  },
+  {
+    id: "abeille", nom: "🐝 Abeille",
+    cris: [
+      { code: "fr", langue: "Français", texte: "Bzzz" },
+      { code: "zh", langue: "Chinois",  texte: "Wēng wēng wēng", note: "嗡嗡嗡" },
+      { code: "ja", langue: "Japonais", texte: "Buun", note: "ブーン" },
+      { code: "tr", langue: "Turc",     texte: "Vızz" },
+      { code: "hi", langue: "Hindi",    texte: "Barr", note: "बर्र" },
+    ],
+  },
+  {
+    id: "cheval", nom: "🐎 Cheval",
+    cris: [
+      { code: "fr", langue: "Français", texte: "Hiii hiii" },
+      { code: "en", langue: "Anglais",  texte: "Neigh" },
+      { code: "ru", langue: "Russe",    texte: "I-go-go", note: "И-го-го" },
+      { code: "de", langue: "Allemand", texte: "Iehiehieh" },
+      { code: "ko", langue: "Coréen",   texte: "Hiing", note: "히잉" },
     ],
   },
 ];
