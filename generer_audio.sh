@@ -2,14 +2,15 @@
 # Génère les MP3 des onomatopées avec les voix neuronales Microsoft (edge-tts).
 # Installation (une fois) : python3 -m venv .venv && .venv/bin/pip install edge-tts
 # Usage : ./generer_audio.sh [animal/fichier ...]  (sans argument : tous les cris)
-# Format : animal|fichier|voix|texte prononcé[|vitesse]  (vitesse < 1 pour allonger le son, ex. 0.6)
+# Format : animal|fichier|voix|texte prononcé[|vitesse[|options edge-tts]]
+#   vitesse < 1 allonge le son après coup (ex. 0.6) ; options : ex. --rate=-50% --pitch=+40Hz
 cd "${0:A:h}"
-while IFS='|' read -r animal fichier voix texte vitesse; do
+while IFS='|' read -r animal fichier voix texte vitesse opts; do
   [[ -z "$animal" || "$animal" == \#* ]] && continue
   (( $# )) && (( ! ${@[(Ie)$animal/$fichier]} )) && continue
   mkdir -p "audio/$animal"
   sortie="audio/$animal/$fichier.mp3"
-  .venv/bin/edge-tts --voice "$voix" --text "$texte" --write-media "$sortie" 2>/dev/null &&
+  .venv/bin/edge-tts --voice "$voix" ${=opts} --text "$texte" --write-media "$sortie" 2>/dev/null &&
     if [[ -n "$vitesse" ]]; then
       ffmpeg -nostdin -y -loglevel error -i "$sortie" -filter:a "atempo=$vitesse" "$sortie.tmp.mp3" && mv "$sortie.tmp.mp3" "$sortie"
     fi &&
@@ -66,14 +67,25 @@ chat|el|el-GR-AthinaNeural|Νιάου νιάου!
 chat|vi|vi-VN-HoaiMyNeural|Meo meo!
 chat|bn|bn-IN-TanishaaNeural|মিউ মিউ
 chat|uk|uk-UA-PolinaNeural|М'яв-м'яв!
-abeille|fr|fr-FR-DeniseNeural|Bzeu !|0.6
 abeille|zh|zh-CN-XiaoxiaoNeural|嗡嗡嗡
 abeille|ja|ja-JP-NanamiNeural|ブーン
 abeille|tr|tr-TR-EmelNeural|Vızz!
 abeille|hi|hi-IN-SwaraNeural|बर्र
-cheval|fr|fr-FR-DeniseNeural|Hiiii, hiiii !
+cheval|fr|fr-FR-DeniseNeural|Hîîî, hîîî !||--rate=-50% --pitch=+40Hz
 cheval|en|en-US-AvaNeural|Neigh!
 cheval|ru|ru-RU-SvetlanaNeural|И-го-го!
 cheval|de|de-DE-KatjaNeural|Ieh-hieh-hieh!
 cheval|ko|ko-KR-SunHiNeural|히잉
 LISTE
+
+# Cas particulier : la voix épelle « bzzz » (B-Z-Z-Z). On garde le « bz » de « Bzou »
+# et on étire seulement le « z » pour obtenir un bourdonnement continu.
+if (( ! $# || ${@[(Ie)abeille/fr]} )); then
+  TMP=$(mktemp -d)
+  .venv/bin/edge-tts --voice fr-FR-DeniseNeural --text "Bzou" --write-media "$TMP/bzou.mp3" 2>/dev/null &&
+    ffmpeg -nostdin -y -loglevel error -i "$TMP/bzou.mp3" -filter_complex \
+      "[0]atrim=0:0.29,asetpts=N/SR/TB[b];[0]atrim=0.29:0.35,asetpts=N/SR/TB,atempo=0.5,atempo=0.5,atempo=0.5,atempo=0.5,afade=t=out:st=0.55:d=0.3[z];[b][z]acrossfade=d=0.02" \
+      -codec:a libmp3lame -q:a 3 audio/abeille/fr.mp3 &&
+    echo "ok  abeille/fr.mp3  (bzzz)" || echo "ÉCHEC  abeille/fr.mp3"
+  rm -rf "$TMP"
+fi
