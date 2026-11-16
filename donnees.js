@@ -121,7 +121,7 @@ const ANIMAUX = [
   },
   {
     id: "cheval", nom: "🐎 Cheval",
-    nature: { auteur: "Hü.", licence: "Domaine public", source: "https://commons.wikimedia.org/wiki/File:Wiehern.ogg" },
+    nature: { auteur: "E. Briefer et al.", licence: "CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:Segregation-of-information-about-emotional-arousal-and-valence-in-horse-whinnies-srep09989-s2.oga" },
     cris: [
       { code: "fr", langue: "Français", texte: "Hiii hiii" },
       { code: "en", langue: "Anglais",  texte: "Neigh" },
