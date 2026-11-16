@@ -7,10 +7,10 @@
 <style>
   :root {
     --bg: #faf7f2; --card: #ffffff; --text: #222; --muted: #777;
-    --accent: #d9480f; --border: #e8e2d8;
+    --accent: #d9480f; --border: #e8e2d8; --nature: #eef6ea;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #1b1a18; --card: #262422; --text: #eee; --muted: #999; --accent: #ff8a4c; --border: #3a3733; }
+    :root { --bg: #1b1a18; --card: #262422; --text: #eee; --muted: #999; --accent: #ff8a4c; --border: #3a3733; --nature: #26301f; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text);
@@ -28,6 +28,10 @@
   .word { font-size: 1.2rem; font-weight: 600; }
   .word small { display: block; font-weight: 400; font-size: .85rem; color: var(--muted); }
   .actions { white-space: nowrap; text-align: right; }
+  tr.nature { background: var(--nature); }
+  tr.nature .lang { color: var(--text); font-weight: 600; }
+  tr.nature .word { font-size: 1rem; }
+  tr.nature small a { color: var(--muted); }
   button, a.dl { font: inherit; font-size: .9rem; padding: 6px 12px; border-radius: 6px;
                  border: 1px solid var(--accent); cursor: pointer; text-decoration: none; }
   button { background: var(--accent); color: #fff; }
@@ -43,7 +47,8 @@
 <body>
 <main>
   <h1>Cris d'animaux</h1>
-  <p class="source">Source : <a href="https://fr.wikipedia.org/wiki/Liste_d'onomatop%C3%A9es_dans_diff%C3%A9rentes_langues" target="_blank" rel="noopener">Wikipédia – Liste d'onomatopées dans différentes langues</a></p>
+  <p class="source">Source : <a href="https://fr.wikipedia.org/wiki/Liste_d'onomatop%C3%A9es_dans_diff%C3%A9rentes_langues" target="_blank" rel="noopener">Wikipédia – Liste d'onomatopées dans différentes langues</a><br>
+    Vrais cris : enregistrements de <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a> (auteur et licence indiqués pour chaque animal)</p>
   <div id="animaux"></div>
 </main>
 
@@ -57,23 +62,30 @@ for (const animal of ANIMAUX) {
   titre.textContent = animal.nom;
   const table = document.createElement("table");
 
-  for (const cri of animal.cris) {
-    const src = `audio/${animal.id}/${cri.code}.mp3`;
+  const ajouterLigne = (langue, texte, note, code) => {
+    const src = `audio/${animal.id}/${code}.mp3`;
     const tr = table.insertRow();
-    tr.insertCell().outerHTML = `<td class="lang">${cri.langue}</td>`;
+    tr.insertCell().outerHTML = `<td class="lang">${langue}</td>`;
     const mot = tr.insertCell();
     mot.className = "word";
-    mot.textContent = cri.texte;
-    if (cri.note) mot.insertAdjacentHTML("beforeend", `<small>${cri.note}</small>`);
+    mot.textContent = texte;
+    if (note) mot.insertAdjacentHTML("beforeend", `<small>${note}</small>`);
     const actions = tr.insertCell();
     actions.className = "actions";
-    actions.innerHTML = `<button>▶ Écouter</button><a class="dl" href="${src}" download="${animal.id}-${cri.code}.mp3">⬇ Télécharger</a>`;
+    actions.innerHTML = `<button>▶ Écouter</button><a class="dl" href="${src}" download="${animal.id}-${code}.mp3">⬇ Télécharger</a>`;
     actions.querySelector("button").onclick = () => {
       if (lecteur) lecteur.pause();
       lecteur = new Audio(src);
       lecteur.play();
     };
-  }
+    return tr;
+  };
+
+  // Le vrai cri de l'animal (enregistrement réel), en tête de tableau
+  const n = animal.nature;
+  ajouterLigne("🎙️ Vrai cri", "Enregistrement réel",
+    `<a href="${n.source}" target="_blank" rel="noopener">${n.auteur}</a> · ${n.licence}`, "nature").className = "nature";
+  for (const cri of animal.cris) ajouterLigne(cri.langue, cri.texte, cri.note, cri.code);
   conteneur.append(titre, table);
 }
 </script>

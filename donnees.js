@@ -1,8 +1,10 @@
 // Pour ajouter un animal : ajouter une entrée ici, une ligne dans generer_audio.sh,
 // puis lancer le script (fichiers dans audio/<id>/<code>.mp3)
+// « nature » : vrai cri de l'animal (audio/<id>/nature.mp3), extrait d'un enregistrement de Wikimedia Commons
 const ANIMAUX = [
   {
     id: "chien", nom: "🐕 Chien",
+    nature: { auteur: "Amada44", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Barking_of_a_dog_2.ogg" },
     cris: [
       { code: "fr",   langue: "Français", texte: "Ouaf ouaf" },
       { code: "fr-2", langue: "Français", texte: "Wouf wouf" },
@@ -16,6 +18,7 @@ const ANIMAUX = [
   },
   {
     id: "coq", nom: "🐓 Coq",
+    nature: { auteur: "alys", licence: "Domaine public", source: "https://commons.wikimedia.org/wiki/File:Medium_rooster_crowing.ogg" },
     cris: [
       { code: "fr", langue: "Français", texte: "Cocorico" },
       { code: "en", langue: "Anglais",  texte: "Cock-a-doodle-doo" },
@@ -27,6 +30,7 @@ const ANIMAUX = [
   },
   {
     id: "grenouille", nom: "🐸 Grenouille",
+    nature: { auteur: "MichaeltheFox8621", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Single_Frog_Croak.oga" },
     cris: [
       { code: "fr", langue: "Français", texte: "Coâ coâ" },
       { code: "en", langue: "Anglais",  texte: "Ribbit" },
@@ -37,6 +41,7 @@ const ANIMAUX = [
   },
   {
     id: "cochon", nom: "🐖 Cochon",
+    nature: { auteur: "erdie", licence: "CC BY 3.0", source: "https://commons.wikimedia.org/wiki/File:Pig_grunt_-_Erdie.ogg" },
     cris: [
       { code: "fr", langue: "Français", texte: "Groin groin" },
       { code: "ar", langue: "Arabe",    texte: "Qubaax", note: "قُباع" },
@@ -48,6 +53,7 @@ const ANIMAUX = [
   },
   {
     id: "vache", nom: "🐄 Vache",
+    nature: { auteur: "MichaeltheFox8621", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Single_Cow_Moo.ogg" },
     cris: [
       { code: "fr", langue: "Français",    texte: "Meuh" },
       { code: "en", langue: "Anglais",     texte: "Moo" },
@@ -58,6 +64,7 @@ const ANIMAUX = [
   },
   {
     id: "lion", nom: "🦁 Lion",
+    nature: { auteur: "J. Growcott et al.", licence: "CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:Lionroar.wav" },
     cris: [
       { code: "fr", langue: "Français", texte: "Grrr" },
       { code: "fr-2", langue: "Français", texte: "Roaaar" },
@@ -69,6 +76,7 @@ const ANIMAUX = [
   },
   {
     id: "mouton", nom: "🐑 Mouton",
+    nature: { auteur: "earthcalling", licence: "Domaine public", source: "https://commons.wikimedia.org/wiki/File:Sheep_bleating.ogg" },
     cris: [
       { code: "fr", langue: "Français", texte: "Bêê, bêêh" },
       { code: "it", langue: "Italien",  texte: "Bee" },
@@ -79,6 +87,7 @@ const ANIMAUX = [
   },
   {
     id: "oiseau", nom: "🐦 Oiseau",
+    nature: { auteur: "QWerk", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:House_Sparrows_chirping.ogg" },
     cris: [
       { code: "fr", langue: "Français",  texte: "Cui cui" },
       { code: "en", langue: "Anglais",   texte: "Tweet tweet" },
@@ -89,6 +98,7 @@ const ANIMAUX = [
   },
   {
     id: "chat", nom: "🐈 Chat",
+    nature: { auteur: "Heismark", licence: "Domaine public", source: "https://commons.wikimedia.org/wiki/File:Meow_of_a_pleading_cat.oga" },
     cris: [
       { code: "fr", langue: "Français",   texte: "Miaou miaou" },
       { code: "ar", langue: "Arabe",      texte: "Muwaa’", note: "مُواء" },
@@ -100,6 +110,7 @@ const ANIMAUX = [
   },
   {
     id: "abeille", nom: "🐝 Abeille",
+    nature: { auteur: "Spanac", licence: "CC BY 3.0", source: "https://commons.wikimedia.org/wiki/File:Bee_buzzing_sound_(animal_noises).opus" },
     cris: [
       { code: "fr", langue: "Français", texte: "Bzzz" },
       { code: "zh", langue: "Chinois",  texte: "Wēng wēng wēng", note: "嗡嗡嗡" },
@@ -110,6 +121,7 @@ const ANIMAUX = [
   },
   {
     id: "cheval", nom: "🐎 Cheval",
+    nature: { auteur: "Hü.", licence: "Domaine public", source: "https://commons.wikimedia.org/wiki/File:Wiehern.ogg" },
     cris: [
       { code: "fr", langue: "Français", texte: "Hiii hiii" },
       { code: "en", langue: "Anglais",  texte: "Neigh" },
