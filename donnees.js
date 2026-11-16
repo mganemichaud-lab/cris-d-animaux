@@ -22,6 +22,7 @@ const ANIMAUX = [
       { code: "es", langue: "Espagnol", texte: "Kikirikí" },
       { code: "ja", langue: "Japonais", texte: "Kok-e-kok-ok", note: "コケコッコー" },
       { code: "tr", langue: "Turc",     texte: "Ü-ürü-üüü" },
+      { code: "uk", langue: "Ukrainien", texte: "Kukuriku", note: "Кукуріку" },
     ],
   },
   {

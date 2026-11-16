@@ -29,6 +29,7 @@ coq|en|en-US-AvaNeural|Cock-a-doodle-doo!
 coq|es|es-ES-ElviraNeural|¡Kikirikí!
 coq|ja|ja-JP-NanamiNeural|コケコッコー
 coq|tr|tr-TR-EmelNeural|Ü-ürü-üüü!
+coq|uk|uk-UA-PolinaNeural|Кукуріку!
 grenouille|fr|fr-FR-DeniseNeural|Coâ coâ !
 grenouille|en|en-US-AvaNeural|Ribbit!
 grenouille|ru|ru-RU-SvetlanaNeural|Ква ква!
