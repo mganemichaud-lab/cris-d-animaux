@@ -17,9 +17,7 @@ while IFS='|' read -r animal fichier voix texte vitesse opts; do
     echo "ok  $animal/$fichier.mp3  ($texte)" || echo "ÉCHEC  $animal/$fichier.mp3"
 done <<'LISTE'
 chien|fr|fr-FR-DeniseNeural|Ouaf ouaf !
-chien|fr-2|fr-FR-DeniseNeural|Wouf wouf !
-chien|en|en-US-AvaNeural|Woof woof!
-chien|en-2|en-US-AvaNeural|Bow wow!
+chien|en|en-US-AvaNeural|Bow wow!
 chien|es|es-ES-ElviraNeural|¡Guau guau!
 chien|ja|ja-JP-NanamiNeural|ワンワン
 chien|hi|hi-IN-SwaraNeural|बाउ बाउ
@@ -46,8 +44,7 @@ vache|en|en-US-AvaNeural|Moo!|0.5
 vache|nl|nl-NL-FennaNeural|Boe!
 vache|ja|ja-JP-NanamiNeural|モーモー
 vache|tl|fil-PH-BlessicaNeural|Unga!
-lion|fr|fr-FR-DeniseNeural|Grrrrreuh !|0.7
-lion|fr-2|fr-FR-DeniseNeural|Roaaar !|0.7
+lion|fr|fr-FR-DeniseNeural|Roaaar !|0.7
 lion|en|en-US-AvaNeural|Rawr!
 lion|fi|fi-FI-NooraNeural|Mur!
 lion|ja|ja-JP-NanamiNeural|ガオー

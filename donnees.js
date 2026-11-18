@@ -7,9 +7,7 @@ const ANIMAUX = [
     nature: { auteur: "Amada44", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Barking_of_a_dog_2.ogg" },
     cris: [
       { code: "fr",   langue: "Français", texte: "Ouaf ouaf" },
-      { code: "fr-2", langue: "Français", texte: "Wouf wouf" },
-      { code: "en",   langue: "Anglais",  texte: "Woof woof" },
-      { code: "en-2", langue: "Anglais",  texte: "Bow wow" },
+      { code: "en",   langue: "Anglais",  texte: "Bow wow" },
       { code: "es",   langue: "Espagnol", texte: "Guau guau" },
       { code: "ja",   langue: "Japonais", texte: "Wan wan", note: "ワンワン" },
       { code: "hi",   langue: "Hindi",    texte: "Bow bow", note: "बाउ बाउ" },
@@ -66,8 +64,7 @@ const ANIMAUX = [
     id: "lion", nom: "🦁 Lion",
     nature: { auteur: "J. Growcott et al.", licence: "CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:Lionroar.wav" },
     cris: [
-      { code: "fr", langue: "Français", texte: "Grrr" },
-      { code: "fr-2", langue: "Français", texte: "Roaaar" },
+      { code: "fr", langue: "Français", texte: "Roaaar" },
       { code: "en", langue: "Anglais",  texte: "Rawr" },
       { code: "fi", langue: "Finnois",  texte: "Mur" },
       { code: "ja", langue: "Japonais", texte: "Gao", note: "ガオー" },
